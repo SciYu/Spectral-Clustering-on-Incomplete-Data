@@ -1,0 +1,100 @@
+
+*********************************************************
+** Learning from complete and incomplete data using EM **
+*********************************************************
+
+This directory contains matlab code for the series of EM based
+algorithms for learning from incomplete data outlined in (Ghahramani &
+Jordan 1994). 
+
+The code is Matlab Version 3.5i. Modification for more recent versions
+of Matlab should be trivial. The code is intended for exploratory use
+as a research tool. It is not written in a very optimized way (it
+wouldn't have been written in Matlab!)-- in fact at times speed is
+clearly sacrificed for clarity of code. Comments, bug reports, and
+better implementations are welcome. 
+
+Zoubin Ghahramani
+zoubin@psyche.mit.edu
+
+-----------------------------------------------------------------------
+
+*******************************
+** The Learning Engine Files **
+*******************************
+
+The learning engine for each of the series of algorithms is denoted
+by the following codes:
+	"EM"  	all start with this code
+	"class"	the classification algorithms
+	"bin"	for binary valued inputs (Bernoulli mixture) 
+	"d"   	the algorithms with diagonal covariance matrices
+	"inc"   the algorithms that can handle incomplete data
+
+E.g. EM_inc_class_d.m is the code for learning a classifier which 
+has diagonal covariance Gaussians from incomplete data. 
+
+********************
+** The Data Files **
+********************
+
+The format of a data file is very simple and uniform: it must be
+a rectangular matrix of numbers. Each row is a data vector. Therefore
+the number of rows in the file is the number of input patterns (N) and
+the number of columns is the dimensionality of the inputs (D).
+
+Missing inputs are denoted by setting their value to -999.
+
+For classification problems the first D-1 columns are real valued
+attribute data and the Dth column is an integer from 1...nclass,
+denoting the class to which that data point belongs. Missing values
+(-999) can appear in any column.
+
+For binary input problems the data file must be all {0,1,-999}.
+
+*********************
+** The Script File **
+*********************
+
+A sample script file for running the EM algorithm for Gaussian
+mixtures is shown in script.m. For a classification problem there is
+also a corresponding scriptclass.m.
+
+Note that the algorithm will estimate the maximum likelihood
+parameters of the joint input/output density. To obtain estimates of an
+output given an input for function approximation or classification
+we need some extra code that will form conditional expectations or
+sample stochastically:
+
+***********************************************
+** Function Approximation and Classification **
+***********************************************
+
+regress.m 	uses the parameters of the mixture model to predict
+		the values of some variables (y) from the other
+		variables (x) using the least squares estimate E(y|x).
+
+classify.m 	uses the parameters of the mixture model to classify
+		new data points, to fill in data, and to form class
+		conditional means.
+
+**********************
+** Sample Data Sets **
+**********************
+
+Four small data sets are provided:
+
+	dgauss1--A single Gaussian with mean (5,5) and covariance
+		matrix (1.25 2.25, 2.25 4.25). The missing data
+		pattern	is nontrivial.
+
+	dgauss3--A mixture of three Gaussians w/ 
+		mu1=(-5,0) cov1=(8 10,10 13)
+		mu2=(2,2)  cov2=(1.25 -0.5, -0.5 1)
+		mu3=(4,6)  cov3=(2 1,1 1)
+
+	dclass--A simple classification problem w/ 2 Gaussian classes
+		with means (0,0) and (2,2) and variance 1.
+
+	irisdata--The classic Iris data set with varying proportions
+		of missing data (irisdatat is the test set of 50 items).
