@@ -60,13 +60,13 @@ This Github repository contains the implementation of our proposed *Kernel Corre
 
 ## Citation
 
-If you find this code useful for your research, please use the following BibTeX entry. (to be published)
+If you find this code useful for your research, please use the following BibTeX entry.
 
 ```
-@inproceedings{yu2023cluster,
+@inproceedings{yu2023boosting,
   title={Boosting Spectral Clustering on Incomplete Data via Kernel Correction and Affinity Learning},
   author={Yu, Fangchen and Zhao, Runze and Shi, Zhan and Lu, Yiwen and Fan, Jicong and Zeng, Yicheng and Mao, Jianfeng and Li, Wenye},
-  booktitle={37th Conference on Neural Information Processing Systems},
+  booktitle={Thirty-seventh Conference on Neural Information Processing Systems},
   year={2023}
 }
 ```
