@@ -13,7 +13,7 @@ This Github repository contains the implementation of our proposed *Kernel Corre
 ## Method
 
 <p align="center">
-    <img src="./Fig/NeurIPS_poster.png" width="600">
+    <img src="./Fig/NeurIPS2023_poster.png" width="600">
 </p>
 
 ## Folders and files
