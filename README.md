@@ -10,6 +10,12 @@ This Github repository contains the implementation of our proposed *Kernel Corre
 
 - **Self-expressive Affinity Learning**: The KSL-Pp and KSL-Sp algorithms employ proximal $p$-norm and Schatten $p$-norm penalties within the affinity learning framework to promote sparser affinity matrices. The AKLSR algorithm, an adaptive extension, iteratively learns high-quality kernel and affinity matrices through a joint optimization approach.
 
+## Method
+
+<p align="center">
+    <img src="./Fig/NeurIPS_poster.png" width="600">
+</p>
+
 ## Folders and files
 
 <pre>
