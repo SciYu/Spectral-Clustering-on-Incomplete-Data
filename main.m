@@ -3,7 +3,7 @@ addpath(genpath(pwd));
 
 %% Settings
 dataset = 'Yale64';     % dataset
-metric = 'Gaussian';    % kernel type (Gaussian or Laplacian)
+metric = 'Gaussian';    % kernel type (Gaussian or Exponential)
 r = 0.8;                % missing ratio (missing completely at random)
 niter = 5;              % number of repeated experiments
 topk = 10;              % top-k items for recall calculation

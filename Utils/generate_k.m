@@ -2,7 +2,7 @@ function [K_list, D_list] = generate_k(X_list, metric, baseline_calibrate)
 % function [K_list, D_list] = generate_k(X_list, metric, baseline_calibrate)
 %
 % @param X_list              A list of complete data matrix, each column is a sample
-% @param metric              Kernel type (Gaussian, Laplacian)
+% @param metric              Kernel type (Gaussian or Exponential)
 % @param baseline_calibrate  Baselines for distance calibration
 % 
 % @return K_list             Approximate kernel matrices using baselines
@@ -20,7 +20,7 @@ Xmiss = X_list.miss;
 fprintf(['\n  ', metric, ': ']);
 if ~isempty(baseline_calibrate)
     %% Kernel Correction
-    if strcmp(metric, 'Gaussian') || strcmp(metric, 'Laplacian')
+    if strcmp(metric, 'Gaussian') || strcmp(metric, 'Exponential')
         % Euclidean distance
         fprintf('true, ');
         D_true = distance(Xtrue, 'euclidean');
@@ -45,8 +45,8 @@ if ~isempty(baseline_calibrate)
             K_list.ee = exp(-D_ee.^2 / median(D_ee(:))^2);
             K_list.kc = exp(-D_kc.^2 / median(D_kc(:))^2);
             K_list.dc = exp(-D_dc.^2 / median(D_dc(:))^2);
-        elseif strcmp(metric, 'Laplacian')
-            % Laplacian kernel
+        elseif strcmp(metric, 'Exponential')
+            % Exponential kernel
             K_list.true = exp(-D_true / median(D_true(:)));
             K_list.miss = exp(-D_miss / median(D_miss(:)));
             K_list.trf = exp(-D_trf / median(D_trf(:)));
@@ -70,7 +70,7 @@ if ~isempty(baseline_calibrate)
             switch metric
                 case 'Gaussian'
                     K_impute = exp(-D_impute.^2 / median(D_impute(:))^2);
-                case 'Laplacian'
+                case 'Exponential'
                     K_impute = exp(-D_impute / median(D_impute(:)));
             end
             eval(['K_list.', method, ' = K_impute;']);
