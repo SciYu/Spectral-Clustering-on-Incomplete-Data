@@ -25,6 +25,7 @@ if (nargin < 2)
 end
 
 n = size(D0,1);
+D_max = max(D0(:));
 low = 0; high = 1;
 
 % Calculate a Gaussian kernel K0 from D0
@@ -37,6 +38,7 @@ K_new = correct_kernel(K0, maxiter, low, high, type, k);
 % Convert K_new back to D_new
 D_new = sqrt(log(K_new) .* (-sigma^2));
 
+D_new(isinf(D_new)) = D_max;
 D_new = (D_new + D_new') / 2;
 D_new(1:n+1:n^2) = 0;
 D_new = max(real(D_new), 0);
