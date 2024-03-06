@@ -1,4 +1,4 @@
-# NeurIPS2023-Spectral-Clustering-on-Incomplete-Data
+# NeurIPS'2023-Spectral-Clustering-on-Incomplete-Data
 
 The source code for the NeurIPS'2023 paper titled "**Boosting Spectral Clustering on Incomplete Data via Kernel Correction and Affinity Learning**".
 
@@ -13,7 +13,7 @@ This Github repository contains the implementation of our proposed *Kernel Corre
 ## Method
 
 <p align="center">
-    <img src="./Fig/NeurIPS2023_poster.png" width="600">
+    <img src="./Fig/NeurIPS2023_poster.png" width="800">
 </p>
 
 ## Folders and files
