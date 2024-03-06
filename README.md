@@ -24,7 +24,7 @@ This Github repository contains the implementation of our proposed *Kernel Corre
 ./main.m                        - Demo of spectral clustering on incomplete data.
 
 |Dataset/                       - Incomplete data
-   ./Yale64_0.8miss.m           - Incomplete Yale64 dataset with 80% random missing
+   ./Yale64_0.8miss.mat         - Incomplete Yale64 dataset with 80% random missing
 
 |Data_imputation/               - Baselines of data imputation
    ./impute_zero.m              - ZERO Imputation 

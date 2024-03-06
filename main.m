@@ -46,25 +46,25 @@ for iter = 1 : niter
     Score.SC{iter} = eval_cluster(Label.SC{iter}, Y_list{iter});
     
     %% KSSC: Kernel Sparse Subspace Clustering
-    rng(2023 + iter);
+    rng(seed + iter);
     method = 'KSSC'; parameter.lambda = 0.08; parameter.knn = 10;
     [S_list.KSSC{1,iter}, Label.KSSC{1,iter}] = spectral_cluster(K_list{1,iter}, num_cluster, method, parameter);
     Score.KSSC{1,iter} = eval_cluster(Label.KSSC{1,iter}, Y_list{1,iter});
 
     %% KLSR: Kernel Least-Squares Representation
-    rng(2023 + iter);
+    rng(seed + iter);
     method = 'KLSR'; parameter.lambda = 8; parameter.knn = 10;
     [S_list.KLSR{1,iter}, Label.KLSR{1,iter}] = spectral_cluster(K_list{1,iter}, num_cluster, method, parameter);
     Score.KLSR{1,iter} = eval_cluster(Label.KLSR{1,iter}, Y_list{1,iter});
 
    %% KSL-Sp: Kernel Self-expressive Learning with Schatten p-norm
-    rng(2023 + iter);
+    rng(seed + iter);
     method = 'KSL-Sp'; parameter.lambda = 0.6; parameter.knn = 10; 
     [S_list.KSLsp{1,iter}, Label.KSLsp{1,iter}] = spectral_cluster(K_list{1,iter}, num_cluster, method, parameter, iter);
     Score.KSLsp{1,iter} = eval_cluster(Label.KSLsp{1,iter}, Y_list{1,iter});
 
    %% AKLSR: Adaptive Kernel Least-Squares Representation
-    rng(2023 + iter);
+    rng(seed + iter);
     method = 'AKLSR'; parameter.lambda = 0.5; parameter.knn = 10; 
     [S_list.AKLSR{1,iter}, Label.AKLSR{1,iter}] = spectral_cluster(K_list{1,iter}, num_cluster, method, parameter, iter);
     Score.AKLSR{1,iter} = eval_cluster(Label.AKLSR{1,iter}, Y_list{1,iter});
