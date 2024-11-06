@@ -36,19 +36,18 @@ end
 
 
 %%
-function [X, iter] = nearpsd(A, maxits, low, high)
-% function [X, iter] = nearpsd(A, maxits, low, high)
+function Y = nearpsd(A, maxits, low, high)
+% function Y = nearpsd(A, maxits, low, high)
 %
 % Computes the nearest positive semi-definite matrix 
 % for a given square matrix.
 %
-% @param A        a square matrix to be calibrated
+% @param A        a squared matrix to be calibrated
 % @param maxits   max num of iters allowed, default 100
 % @param low      default 0 
 % @param high     default 1
 %
-% @return X       nearest psd matrix to A
-% @return iter    number of iterations taken
+% @return Y       nearest psd matrix to A
 
 if  ~isequal(A,A')
     A = (A + A') / 2;
